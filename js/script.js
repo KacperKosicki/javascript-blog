@@ -1,9 +1,9 @@
 'use strict';
+const optArticleSelector = '.post';
+const optTitleSelector='.post-title';
+const optTitleListSelector='.titles';
+const optArticleTagsSelector = '.post-tags .list';
 function generateTitleLinks() {
-  const optArticleSelector = '.post';
-  const optTitleSelector='.post-title';
-  const optTitleListSelector='.titles';
-  const optArticleTagsSelector = '.post-tags .list';
   /* [DONE] remove contents of titleList */
   const titleList=document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
@@ -62,10 +62,6 @@ const titleClickHandler=function(event){
 };
 generateTitleLinks();
 function generateTags(){
-  const optArticleSelector = '.post';
-  const optTitleSelector='.post-title';
-  const optTitleListSelector='.titles';
-  const optArticleTagsSelector = '.post-tags .list';
   /* [DONE] find all articles */
   const articles=document.querySelectorAll(optArticleSelector);
   /* [DONE] START LOOP: for every article: */
@@ -73,6 +69,7 @@ function generateTags(){
     console.log(article);
     /* [DONE] find tags wrapper */
     const tagsWrapper=document.querySelector(optArticleTagsSelector);
+    console.log(tagsWrapper);
     /* [DONE] make html variable with empty string */
     let html='';
     /* [DONE] get tags from data-tags attribute */
