@@ -5,6 +5,7 @@ const optTitleSelector='.post-title';
 const optTitleListSelector='.titles';
 const optArticleTagsSelector = '.post-tags .list';
 const optArticleAuthorSelector = '.post-author';
+const optAuthorsListSelector = '.list.authors';
 const optTagsListSelector = '.tags.list';
 const optCloudClassCount = 5;
 const optCloudClassPrefix = 'tag-size-';
@@ -134,7 +135,7 @@ function generateTags(){
   const tagList = document.querySelector(optTagsListSelector);
   /* [NEW] create variable for all links HTML code */
   const tagsParams = calculateTagsParams(allTags);
-  console.log('tagsParams:', tagsParams)
+  console.log('tagsParams:', tagsParams);
   let allTagsHTML = '';
   /* [NEW] START LOOP: for each tag in allTags: */
   for(let tag in allTags){
@@ -191,6 +192,7 @@ function addClickListenersToTags(){
 }
 addClickListenersToTags();
 function generateAuthors() {
+  let allAuthors = {};
   const articles = document.querySelectorAll(optArticleSelector);
   for (let article of articles) {
     console.log(article);
@@ -198,9 +200,24 @@ function generateAuthors() {
     console.log(authorWrapper);
     const articleAuthor = authorWrapper.getAttribute('data-author');
     console.log(articleAuthor);
+    if (!allAuthors[articleAuthor]) {
+      allAuthors[articleAuthor] = 1;
+    } else {
+      allAuthors[articleAuthor]++;
+    }
     const linkHTML = '<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
     authorWrapper.innerHTML = linkHTML;
   }
+  const authorList = document.querySelector(optAuthorsListSelector);
+  const authorParams = calculateTagsParams(allAuthors);
+  console.log('tagsParams:', authorParams);
+  let allAuthorsHTML = '';
+  for (let author in allAuthors) {
+    const authorLinkHTML = '<li><a href="#" class="' + calculateTagClass(allAuthors[author], authorParams) + '">' + author + ' (' + allAuthors[author] + ')' + '</a></li>';
+    console.log('tagAuthorHTML:', authorLinkHTML);
+    allAuthorsHTML += authorLinkHTML;
+  }
+  authorList.innerHTML = allAuthorsHTML;
 }
 generateAuthors();
 function authorClickHandler(event) {

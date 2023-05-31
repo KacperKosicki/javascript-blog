@@ -121,28 +121,34 @@ body {
 .tag-size-1 {
   font-size: 80%;
   color: green;
+  font-weight: bold;
 }
 
 .tag-size-2 {
   font-size: 90%;
-  color: blue;
+  color: gold;
+  font-weight: bold;
 }
 
 .tag-size-3 {
   font-size: 100%;
   color: red;
+  font-weight: bold;
 }
 
 .tag-size-4 {
   font-size: 110%;
   color: pink;
+  font-weight: bold;
 }
 
 .tag-size-5 {
   font-size: 120%;
   color: purple;
+  font-weight: bold;
 }
 .tags-cloud a {
   display: inline-block;
   margin-right: 10px;
+  font-weight: bold;
 }
