@@ -4,8 +4,8 @@ const templates = {
   articleTagLink: Handlebars.compile(document.querySelector('#template-article-tag-link').innerHTML),
   articleAuthorLink: Handlebars.compile(document.querySelector('#template-article-author-link').innerHTML),
   tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
-  authorCloudLink: Handlebars.compile(document.querySelector('#template-author-cloud-link').innerHTML)
-}
+  authorCloudLink: Handlebars.compile(document.querySelector('#template-author-cloud-link').innerHTML),
+};
 'use strict';
 /* all const for program use */
 const optArticleSelector = '.post';
@@ -18,7 +18,7 @@ const optTagsListSelector = '.tags.list';
 const optCloudClassCount = 5;
 const optCloudClassPrefix = 'tag-size-';
 function generateTitleLinks(customSelector = '') {
-  console.log(customSelector)
+  console.log(customSelector);
   const titleList=document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
   const articles=document.querySelectorAll(optArticleSelector + customSelector);
@@ -101,7 +101,7 @@ function generateTags(){
   const tagsParams = calculateTagsParams(allTags);
   const allTagsData = {tags: []};
   for(let tag in allTags){
-    const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + ' (' + allTags[tag] + ')' + '</a></li>';
+    //const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + ' (' + allTags[tag] + ')' + '</a></li>';
     allTagsData.tags.push({
       tag: tag,
       count: allTags[tag],
@@ -153,7 +153,7 @@ function generateAuthors() {
   const authorParams = calculateTagsParams(allAuthors);
   const allAuthorsData = {authors: []};
   for (let author in allAuthors) {
-    const authorLinkHTML = '<li><a href="#author-' + author + '" class="' + calculateTagClass(allAuthors[author], authorParams) + '">' + author + ' (' + allAuthors[author] + ')' + '</a></li>';
+    //const authorLinkHTML = '<li><a href="#author-' + author + '" class="' + calculateTagClass(allAuthors[author], authorParams) + '">' + author + ' (' + allAuthors[author] + ')' + '</a></li>';
     allAuthorsData.authors.push({
       tag: author,
       count: allAuthors[author],
