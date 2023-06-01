@@ -115,6 +115,7 @@ function generateTags(){
       console.log(tag);
       /* [DONE] generate HTML of the link */
       const tagHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li> ';
+      console.log(tagHTML);
       /* [DONE] add generated code to html variable */
       html=html+tagHTML;
       console.log(html);
@@ -140,13 +141,13 @@ function generateTags(){
   /* [NEW] START LOOP: for each tag in allTags: */
   for(let tag in allTags){
     /* [NEW] generate code of a link and add it to allTagsHTML */
-    const tagLinkHTML = '<li><a href="#" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + ' (' + allTags[tag] + ')' + '</a></li>';
+    const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + ' (' + allTags[tag] + ')' + '</a></li>';
     console.log('tagLinkHTML:', tagLinkHTML);
     allTagsHTML += tagLinkHTML;
+    tagList.innerHTML = allTagsHTML;
     /* [NEW] END LOOP: for each tag in allTags: */
   }
   /*[NEW] add HTML from allTagsHTML to tagList */
-  tagList.innerHTML = allTagsHTML;
 }
 generateTags();
 function tagClickHandler(event){
@@ -182,7 +183,7 @@ function tagClickHandler(event){
 }
 function addClickListenersToTags(){
   /* [DONE] find all links to tags */
-  const tagLinks = document.querySelectorAll('.post-tags a');
+  const tagLinks = document.querySelectorAll('.post-tags a, .list.tags a');
   /* [DONE] START LOOP: for each link */
   for(let tagLink of tagLinks) {
     /* [DONE] add tagClickHandler as event listener for that link */
@@ -213,7 +214,7 @@ function generateAuthors() {
   console.log('tagsParams:', authorParams);
   let allAuthorsHTML = '';
   for (let author in allAuthors) {
-    const authorLinkHTML = '<li><a href="#" class="' + calculateTagClass(allAuthors[author], authorParams) + '">' + author + ' (' + allAuthors[author] + ')' + '</a></li>';
+    const authorLinkHTML = '<li><a href="#author-' + author + '" class="' + calculateTagClass(allAuthors[author], authorParams) + '">' + author + ' (' + allAuthors[author] + ')' + '</a></li>';
     console.log('tagAuthorHTML:', authorLinkHTML);
     allAuthorsHTML += authorLinkHTML;
   }
@@ -236,6 +237,7 @@ function authorClickHandler(event) {
   for (let authorLink of authorLinks) {
     authorLink.classList.add('active');
   }
+  console.log(author);
   generateTitleLinks('[data-author="' + author + '"]');
 }
 function addClickListenersToAuthors() {
